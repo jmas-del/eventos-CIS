@@ -1,0 +1,96 @@
+<?php 
+require('conexion.php');
+//require('login.php');
+session_start();
+//$usuario=$_POST['usuario'];
+$query = "SELECT Folio,Fecha_Reportado,Hora_Reportado,Telefono,Sector,Nombre,Domicilio,Colonia,Detalle,Suelo,Departamento,Problema,Clasificacion,Prioridad,Persona_Asignada,Estado  FROM jmas ORDER BY Folio ASC";
+$resultado = $conn->query($query);
+$row = $resultado->fetch_assoc();
+//if (!empty($_SESSION["usuario"])) {
+	# code...
+//}else{
+	//echo '<script language="javascript">alert("Inicie sesion");window.location.href="login.html"</script>';
+//}
+
+
+ ?>
+
+ <!DOCTYPE html>
+ <html>
+ <head>
+ 	<title>JMAS</title>
+<meta name="theme-color" content="#0000FF">
+  <meta name="MobileOptimized" content="width">
+  <meta name="HandheldFriendly" content="true">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="shortcut icon" type="image/jpg" href="./img/logo_jmas.jpg">
+  <link rel="apple-touch-icon" href="./img/logo_jmas.jpg">
+  <link rel="apple-touch-startup-image" href="./img/logo_jmas.jpg">
+  <link rel="manifest" href="manifest.json">
+
+ 	 
+  <link rel="stylesheet" href="style.css">
+
+
+ </head>
+ <body>
+<h2>BIENVENIDO </h2>
+  <a href="login.html">Cerrar sesion</a><br>
+<?php //if ($usu = $row['Persona_Asignada']) { 
+  	 WHILE($row = $resultado->fetch_assoc()) {?>
+    <br>
+ 		<label>Folio: </label>
+ 	<label><?php echo $row['Folio']; ?></label><br>
+ 	<label>Fecha: </label>
+ 	<label><?php echo $row['Fecha_Reportado']; ?></label><br>
+ 	<label>Hora: </label>
+ 	<label><?php echo $row['Hora_Reportado']; ?></label><br>
+ 	<label>Telefono: </label>
+ 	<label><?php echo $row['Telefono']; ?></label><br>
+ 	<label>Sector: </label>
+ 	<label><?php echo $row['Sector']; ?></label><br>
+ 	<label>Nombre: </label>
+ 	<label><?php echo $row['Nombre']; ?></label><br>
+ 	<label>Domicilio: </label>
+ 	<label><?php echo $row['Domicilio']; ?></label><br>
+ 	<label>Colonia: </label>
+ 	<label><?php echo $row['Colonia']; ?></label><br>
+ 	<label>Detalle: </label>
+ 	<label><?php echo $row['Detalle']; ?></label><br>
+ 	<label>Suelo: </label>
+ 	<label><?php echo $row['Suelo']; ?></label><br>
+  <label>Departamento: </label>
+  <label><?php echo $row['Departamento']; ?></label><br>
+<label>Problema: </label>
+  <label><?php echo $row['Problema']; ?></label><br>
+<label>Clasificacion: </label>
+  <label><?php echo $row['Clasificacion']; ?></label><br>
+<label>Prioridad: </label>
+  <label><?php echo $row['Prioridad']; ?></label><br>
+<br>
+<label>Materiales(codigo): </label>
+ <input type="text" name="Materiales_Codigo" placeholder="Ingresa el codigo de los materiales"> <br><br>
+ <label># de Empleados: </label>
+ <input type="text" name="#_de_Empleados" placeholder="Ingrese el numero de empleados"><br><br>
+ <label>Duracion Hrs. </label>
+  <input type="text" name="Duracion" placeholder="Ingrese la duracion"><br><br>
+  <label>Horas Maquina </label>
+   <input type="text" name="Horas_Maquina" placeholder="Ingrese el numero de horas maquina"><br><br>
+
+   <div>Estado
+<select name="estado"> 
+  <option value="En proceso">EN PROCESO</option>
+  <option value="Terminada">TERMINADO</option>
+  <option value="En bacheo">EN BACHEO</option>
+
+
+</select>
+   </div><br>
+   
+   <input type="submit" name="save" value="Guardar">
+
+ 	<?php } ?>
+
+ </body>
+ </html>
