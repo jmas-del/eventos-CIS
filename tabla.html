@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>  <title>TABLA</title>  </head>
+<body><a href="index.html">Regresar</a></th>
+	<center>
+		<table border="1">
+			<thead><tr>
+				<th colspan="1"><a href="login.html">Login</a></th>
+			
+				<th colspan="19">Eventos del CIS</th>
+			</tr> </thead>
+			<tbody>
+				<tr>
+					<td>Folio</td>
+					<td>Fecha</td>
+					<td>Hora</td>
+					<td>Telefono</td>
+					<td>Sector</td>
+					<td>Nombre</td>
+					<td>Domicilio</td>
+					<td>Colonia</td>
+					<td>Detalle</td>
+					<td>Suelo</td>
+					<td>Departamento</td>
+					<td>Problema</td>
+					<td>Clasificacion</td>
+					<td>Prioridad</td>
+					<td>Persona Asignada</td>
+					<td>Materiales (código)</td>
+					<td># Empleados</td>
+					<td>Duracion Hrs.</td>
+					<td>Hrs. Maquina</td>
+					<td>Estado</td>
+					<td></td>
+				</tr>
+					<?php 
+					include("conexion.html");
+					$queryD = "SELECT * FROM jmas";
+					$resultadoD = $conn->query($queryD);
+					while($rowD=$resultadoD->fetch_assoc()){?>
+					<tr>
+						<td><?php echo $rowD['Folio'];?></td>
+						<td><?php echo $rowD['Fecha_Reportado'];?></td>
+						<td><?php echo $rowD['Hora_Reportado'];?></td>
+						<td><?php echo $rowD['Telefono'];?></td>
+						<td><?php echo $rowD['Sector'];?></td>
+						<td><?php echo $rowD['Nombre'];?></td>
+						<td><?php echo $rowD['Domicilio'];?></td>
+						<td><?php echo $rowD['Colonia'];?></td>
+						<td><?php echo $rowD['Detalle'];?></td>
+						<td><?php echo $rowD['Suelo'];?></td>
+						<td><?php echo $rowD['Departamento'];?></td>
+						<td><?php echo $rowD['Problema'];?></td>
+						<td><?php echo $rowD['Clasificacion'];?></td>
+						<td><?php echo $rowD['Prioridad'];?></td>
+						<td><?php echo $rowD['Persona_Asignada'];?></td>
+						<td><?php echo $rowD['Materiales_Codigo'];?></td>
+						<td><?php echo $rowD['Empleados'];?></td>
+						<td><?php echo $rowD['Duracion_Hrs'];?></td>
+						<td><?php echo $rowD['Hrs_Maquina'];?></td>
+						<td><?php echo $rowD['Estado'];?></td>
+					</tr>
+					<?php	}	 ?>
+				</tbody>
+		</table>
+	</center>
+</body>
+</html>
